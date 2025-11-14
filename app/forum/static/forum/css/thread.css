@@ -1,0 +1,108 @@
+
+#thread-content {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    min-height: 5px;
+    margin: var(--spacing-l) auto;
+}
+
+#thread-title-container {
+    background: var(--striped-background);
+    color: var(--text);
+    width: 95%;
+    margin: var(--spacing-m) auto;
+    padding: var(--spacing-xxs) var(--spacing-s);
+    gap: 5px;
+    justify-items: stretch;
+    justify-content: space-between;
+    align-content: start;
+    border-radius: 5px;
+}
+
+.thread-entry {
+    display: grid;
+    grid-template-columns: 300px 4fr;
+    grid-template-rows: 50px auto;
+}
+
+.user-information {
+    background: var(--bg);
+    border-radius: 15px;
+    margin: var(--spacing-m);
+    text-align: center;
+    grid-row: 1 / 2;
+    align-self: start;
+    padding: var(--spacing-xs);
+}
+
+.user-information .user-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 250ms;
+}
+
+.user-name:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.thread-entry-inner {
+    background: var(--bg);
+    border-radius: 15px;
+    margin: var(--spacing-m);
+    padding: var(--spacing-m);
+    grid-row: 1 / 3;
+}
+
+.thread-entry-content {
+    color: var(--text);
+}
+
+.thread-content-paragraph {
+    white-space: pre-line;
+}
+
+#comment-area {
+    width: 90%;
+    background: var(--bg);
+    padding: var(--spacing-m);
+    border-radius: 15px;
+    margin: var(--spacing-l) auto;
+}
+
+#comment-area h1 {
+    color: var(--text);
+    font-size: 1.25rem;
+}
+
+.text-editor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.editable-text-field {
+    border: 1px var(--text) solid;
+    min-height: 200px;
+    width: 100%;
+    padding: var(--spacing-s);
+    border-radius: 10px;
+    background: var(--bg-m-light);
+    color: var(--text);
+}
+
+.editable-text-field:focus {
+    outline: none;
+}
+
+.button-bar {
+    display: flex;
+    gap: var(--spacing-s);
+    width: 100%;
+    justify-content: flex-end;
+}

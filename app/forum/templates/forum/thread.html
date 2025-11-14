@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Forum - Thread</title>
+
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/thread-post.js' %}"></script>
+    <script src="{% static 'app/js/text-editor.js' %}"></script>
+    <script src="{% static 'forum/js/thread.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'forum/css/thread.css' %}">
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <div id="thread-title-container">
+        <h1 id="thread-title">Sample Title</h1>
+    </div>
+
+    <div id="thread-content">
+
+
+
+    </div>
+
+    <div id="comment-area">
+        <h1>Comment</h1>
+        <text-editor confirm-button-text="Comment"></text-editor>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+}
+
+/*
+    Colors and styling help was given through a YouTube series
+    by @Sajid, and the color pallete was generated at
+    https://www.iamsajid.com/ui-colors/
+*/
+
+:root {
+
+    --ff: Arial, Helvetica, sans-serif;
+
+    /* Spacings */
+    --spacing-xxs: 0.25rem;
+    --spacing-xs: 0.5rem;
+    --spacing-s: 0.75rem;
+    --spacing-m: 1rem;
+    --spacing-l: 1.25rem;
+    --spacing-xl: 1.75rem;
+    --spacing-xxl: 2.5rem;
+
+    --striped-background: repeating-linear-gradient(
+        45deg,
+        var(--primary),
+        var(--primary) 10px,
+        var(--off-primary) 10px 20px,
+        var(--off-primary) 20px
+    );
+
+
+    /* Colors */
+    --bg-dark: oklch(77.944% 0.0009 180.152);
+    --bg-m-dark: oklch(0.83 0 270);
+    --bg: oklch(0.88 0 270);
+    --bg-m-light: oklch(0.93 0 270);
+    --bg-light: oklch(0.98 0 270);
+
+    --text: oklch(20.812% 0 269.406);
+    --text-muted: oklch(0.4 0 270);
+
+    --highlight: oklch(1 0.06 270);
+    --border: 1px solid oklch(0.6 0.06 270);
+    --border-muted: oklch(0.7 0.06 270);
+
+    --primary: oklch(62.915% 0.16565 267.531);
+    --off-primary: oklch(55.65% 0.2083 265.937);
+    --secondary: oklch(79.368% 0.16261 82.878);
+
+    --danger: oklch(58.272% 0.20294 31.62);
+    --warning: oklch(86.121% 0.17226 97.87);
+    --success: oklch(82.7% 0.20732 152.368);
+    --info: oklch(51.942% 0.18039 259.962);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+
+        --bg-dark: oklch(0.1 0 270);
+        --bg-m-dark: oklch(0.15 0 270);
+        --bg: oklch(0.2 0 270);
+        --bg-m-light: oklch(0.25 0 270);
+        --bg-light: oklch(0.3 0 270);
+
+        --text: oklch(0.96 0 270);
+        --text-muted: oklch(0.76 0 270);
+
+        --highlight: oklch(0.5 0.06 270);
+        --border: 1px solid oklch(0.4 0.04 270);
+        --border-muted: oklch(0.3 0.06 270);
+
+        --primary: oklch(62.915% 0.16565 267.531);
+        --off-primary: oklch(54.043% 0.19499 266.092);
+        --secondary: oklch(0.76 0.1 90);
+
+        --danger: oklch(53.352% 0.14506 32.075);
+        --warning: oklch(84.535% 0.15807 100.382);
+        --success: oklch(57.068% 0.12097 155.024);
+        --info: oklch(64.682% 0.17381 259.641);       
+    }
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-muted);
+    font-family: var(--ff);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75em;
+    background: var(--bg);
+}
+
+.nav-log-dependent {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-content: flex-end;
+}
+
+.nav-log-dependent[data-active="false"] {
+    display: none;  
+}
+
+.primary-button {
+    cursor: pointer;
+    background: var(--primary);
+    border: none;
+    color: var(--text);
+    padding: var(--spacing-xs);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.secondary-button {
+    cursor: pointer;
+    background: none;
+    border: 2px var(--primary) solid;
+    padding: var(--spacing-xs);
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.tertiary-button {
+    cursor: pointer;
+    background: none;
+    border: 1px var(--secondary) solid;
+    padding: var(--spacing-xs);
+    color: var(--secondary);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.danger-button {
+    cursor: pointer;
+    background: var(--danger);
+    border: 1px var(--danger) solid;
+    padding: var(--spacing-xs);
+    color: var(--text);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.icon {
+    fill: var(--text);
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.small-icon {
+    fill: var(--text);
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.home-page-link {
+    color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.home-page-link a{
+    color: var(--text);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 100ms;
+}
+
+.home-page-link a:hover {
+    color: var(--secondary);
+}
