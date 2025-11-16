@@ -11,3 +11,9 @@ def view_profile(request, username):
     print(username)
     profile = get_object_or_404(Profile, user__username = username)
     return render(request, 'accounts/profile.html', {'profile': profile})
+
+def login(request):
+    return render(request, 'accounts/login.html')
+
+def register(request):
+    return render(request, 'accounts/register.html')

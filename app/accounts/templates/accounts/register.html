@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Forum - Sign Up</title>
+
+    <!-- <script src="../src/utils/common script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/scripts/register.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/register.css"> -->
+
+    <script src="{% static 'app/js/global-script.js' %}"></script>
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'accounts/js/register.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/register.css' %}">
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <div id="register-container">
+        <form id="register-form">
+            <h1>Sign Up</h1>
+
+            <div class="input-line">
+                <p class="form-text">Email</p>
+                <input type="email" id="email-input" class="form-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Birthdate</p>
+                <input type="date" id="birthdate-input" class="form-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Username</p>
+                <input type="text" id="username-input" class="form-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Password</p>
+                <input type="password" id="password-input" class="form-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Confirm Password</p>
+                <input type="password" name="" id="password-confirm" class="form-input" required>
+            </div>
+
+            <input type="submit" value="Sign Up" class="primary-button" id="submit-register">
+
+        </form>
+        
+        <div class="help-line">
+            <p>Already have an account? <a href="./login.html">Log in here</a> </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Forum - Login</title>
+
+    <!-- <script src="../src/utils/common script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/scripts/login.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/login.css"> -->
+
+    <script src="{% static 'app/js/global-script.js' %}"></script>
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'accounts/js/login.js'%}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/login.css'%}">
+
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <div id="login-container">
+        <form id="login-form">
+            
+            <h1>Log In</h1>
+
+            <div class="input-line">
+                <p class="form-text">Username</p>
+                <input type="text" class="form-input" id="username-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Password</p>
+                <input type="password" class="form-input" id="passowrd-input" required>
+            </div>
+
+            <div class="input-line">
+                <p class="form-text">Remember Me</p>
+                <input type="checkbox" name="" id="remember-user-check">
+            </div>
+            
+            <input type="submit" class="primary-button" value="Log In" id="submit-login">
+        </form>
+
+        <div class="help-line">
+            <p>Forgot your Password? <a href="#">Change it here</a></p>
+            <p>Don't have an account? <a href="./register.html">Sign Up here</a></p>
+        </div>
+    </div>
+</body>
+</html>
