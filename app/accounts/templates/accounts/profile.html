@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_'s Profile</title>
+
+    <!-- <script src="../src/utils/common script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/thread-highlight.js"></script>
+    <script src="../src/scripts/profile.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/home.css">
+    <link rel="stylesheet" href="../src/styles/profile.css"> -->
+
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/thread-highlight.js' %}"></script>
+    <script src="{% static 'app/js/text-editor.js' %}"></script>
+    <script src="{% static 'accounts/js/profile.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/profile.css' %}">
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <div id="user-not-found" data-active="false">
+        <h1>User Not Found</h1>
+        <h2>We're sorry, but we couldn't find the user you were looking for.</h2>
+    </div>
+
+    <div id="user-info-bar" data-active="false">
+        <div id="user-info">
+            <p id="user-name">Sample Name</p>
+            <p id="user-joined">Joined: ##/##/####</p>
+            <p id="user-bio">Sample bio that should be multiple line long in order to fit longer text fields.</p>
+        </div>
+
+        <div id="user-connections">
+            <div id="direct-connections">
+                <div class="connection-stat">
+                    <p class="statistic-text">Observes</p>
+                    <p id="user-followers" class="statistics-number">2.5K</p>
+                </div>
+                <div class="connection-stat">
+                    <p class="statistic-text">Observed By</p>
+                    <p id="user-following" class="statistics-number">3.7K</p>
+                </div>
+            </div>
+            <button id="follow-status-button" class="primary-button" data-following="true">Observe</button>
+        </div>
+    </div>
+
+    <!-- Populated by JS from the database -->
+    <div class="new-posts-highlight">
+        <h1>Threads</h1>
+        <div class="thread-highlights" id="thread-highlights"></div>
+    </div>
+</body>
+</html>
