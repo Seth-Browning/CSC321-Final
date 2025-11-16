@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Forum - New Post</title>
+
+    <!-- <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/text-editor.js"></script>
+    <script src="../src/utils/common script.js"></script>
+    <script src="../src/scripts/post.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/post.css"> -->
+
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/thread-post.js' %}"></script>
+    <script src="{% static 'app/js/text-editor.js' %}"></script>
+    <script src="{% static 'forum/js/post.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'forum/css/post.css' %}">
+
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <section id="post-tools">
+        <h1>Make a Thread</h1>
+        <div id="post-where">
+            <label for="where-to-post">Subforum: </label>
+            <select name="where-to-post" id="where-to-post">
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Indie">Indie</option>
+                <option value="RPG">RPG</option>
+                <option value="Platformer"><Platformer/option>
+                <option value="Puzzle">Puzzle</option>
+            </select>
+        </div>
+        <text-editor id="post-field" confirm-button-text="Post"></text-editor>
+        <div id="post-status">
+            <div class="post-status-bar" id="post-status-success" data-active="false">
+                <p>Post Made Successfully (Not really this is a mock site)</p>
+            </div>
+            <div class="post-status-bar" id="post-status-fail" data-active="false">
+                <p>Failed to Post</p>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

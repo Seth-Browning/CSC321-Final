@@ -1,0 +1,85 @@
+#post-tools {
+    width: 95%;
+    margin: var(--spacing-m) auto;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: var(--spacing-m);
+    display: flex;
+    flex-direction: column;
+}
+
+#post-tools h1 {
+    color: var(--text);
+    font-size: 1.5rem;
+    line-height: 75%;
+    margin-bottom: 0;
+}
+
+#post-where {
+    margin: var(--spacing-m) var(--spacing-s);
+}
+
+#where-to-post {
+    font-family: var(--ff);
+    background: var(--bg-light);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: var(--spacing-xxs);
+}
+
+.text-editor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.editable-text-field {
+    border: 1px var(--text) solid;
+    min-height: 200px;
+    width: 100%;
+    padding: var(--spacing-s);
+    border-radius: 10px;
+    background: var(--bg-m-light);
+    color: var(--text);
+}
+
+.editable-text-field:focus {
+    outline: none;
+}
+
+.button-bar {
+    display: flex;
+    gap: var(--spacing-s);
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.post-status-bar {
+    border-radius: 5px;
+    margin: var(--spacing-m) 0;
+    padding: var(--spacing-s);
+}
+
+.post-status-bar[data-active="false"] {
+    display: none;
+}
+
+.post-status-bar p {
+    line-height: 75%;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+#post-status-success {
+    background: var(--success);
+    color: var(--text);
+}
+
+#post-status-fail {
+    background: var(--danger);
+    color: var(--text);
+}

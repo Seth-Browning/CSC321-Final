@@ -10,3 +10,6 @@ def thread_detail(request, pk):
     thread = get_object_or_404(Thread, pk = pk)
     posts = thread.posts.all()
     return render(request, 'forum/thread.html')
+
+def new_thread(request):
+    return render(request, 'forum/post.html')
