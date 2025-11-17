@@ -1,0 +1,106 @@
+
+#subforum-info {
+    width: 95%;
+    margin: var(--spacing-s) auto;
+    background: var(--striped-background);
+    padding: var(--spacing-xxs);
+    border-radius: 5px;
+}
+
+#subforum-title {
+    color: var(--text);
+}
+
+.new-posts-highlight {
+    display: inline-block;
+    width: 95%;
+    margin: var(--spacing-l);
+    margin-left: 2.5%;
+}
+
+thread-highlight:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+thread-highlight:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+thread-highlight:nth-child(odd) {
+    background: var(--bg-m-light);
+}
+
+.new-posts-highlight h1 {
+    font-size: var(--spacing-l);
+    background: none;
+}
+
+.thread-highlights {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+thread-highlight {
+    background: var(--bg-light);
+    padding: var(--spacing-s);
+    background: var(--bg);
+}
+
+thread-highlight + thread-highlight {
+    margin-top: 2px;
+}
+
+.thread-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--spacing-xxs);
+}
+
+.thread-top p {
+    display: inline;
+    line-height: 0;
+    padding: 0;
+}
+
+thread-highlight .thread-title {
+    color: var(--text);
+    cursor: pointer;
+    transition: color 250ms;
+}
+
+thread-highlight .thread-title:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+thread-highlight .thread-creator {
+    font-style: italic;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 250ms;
+}
+
+thread-highlight .thread-creator:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.first-thread {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.last-thread {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+div[data-active="false"] {
+    display: none;
+}

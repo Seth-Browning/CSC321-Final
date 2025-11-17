@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Forum - </title>
+
+    <!-- <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/thread-highlight.js"></script>
+    <script src="../src/utils/common script.js"></script>
+    <script src="../src/scripts/subforum.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/subforum.css"> -->
+
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/thread-highlight.js' %}"></script>
+    <script src="{% static 'app/js/global-script.js' %}"></script>
+    <script src="{% static 'forum/js/subforum.js' %}" defer></script>
+
+    <link rel="stylesheet" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/subforum.css' %}">
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <div id="subforum-not-found" data-active="false">
+        <h1>We're sorry, this subforum does not exist.</h1>
+    </div>
+
+    <div id="loaded-content" data-active="true">
+        <div id="subforum-info">
+            <h1 id="subforum-title"></h1>
+        </div>
+    
+        <section id="pinned-threads" class="new-posts-highlight">
+            <div class="thread-highlights">
+                <thread-highlight user-name="moderator" title="Site Rules" thread-id="0"></thread-highlight>
+            </div>
+        </section>
+    
+        <section id="recent-threads" class="new-posts-highlight">
+            <div id="forum-posts" class="thread-highlights">
+    
+            </div>
+        </section>
+    </div>
+</body>
+</html>
