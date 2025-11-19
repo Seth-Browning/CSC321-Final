@@ -4,6 +4,7 @@ const succcessBar = document.getElementById('post-status-success')
 const failBar = document.getElementById('post-status-fail')
 
 document.querySelector('text-editor').addEventListener('text-editor-submit', (e) => {
+    console.log('fired')
     if (e.detail.text.trim() === '') return;
 
     const randomNumber = Math.floor(Math.random() * 100)

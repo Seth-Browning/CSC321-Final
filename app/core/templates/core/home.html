@@ -32,7 +32,14 @@
         <div id="title-card">
             <h1>Games Forum</h1>
             {% if user.is_authenticated %}
-                <button id="post-button" class="primary-button">+ New Post</button>
+                <button id="post-button" class="primary-button" data-postURL="{% url 'new_thread' %}">+ New Post</button>
+                <script>
+                    const postButton = document.getElementById('post-button')
+                    console.log(postButton.dataset)
+                    postButton.addEventListener('click', () => {
+                        window.location.href = postButton.dataset.posturl
+                    })
+                </script>
             {% endif %}
         </div>
 
