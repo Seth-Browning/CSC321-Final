@@ -31,7 +31,9 @@
 
         <div id="title-card">
             <h1>Games Forum</h1>
-            <button id="post-button" class="primary-button">+ New Post</button>
+            {% if user.is_authenticated %}
+                <button id="post-button" class="primary-button">+ New Post</button>
+            {% endif %}
         </div>
 
         <div id="subforum-links">

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Profile
 from django.http import HttpResponse
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
 
 # Create your views here.
@@ -9,6 +10,7 @@ from .forms import RegisterForm
 def login_user(request):
     raise NotImplementedError()
 
+@login_required
 def view_profile(request, username):
     print(username)
     profile = get_object_or_404(Profile, user__username = username)
