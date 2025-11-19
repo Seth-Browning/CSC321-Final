@@ -1,7 +1,8 @@
 
 class SubforumLink extends HTMLElement {
     static observedAttributes = [
-        'subforum'
+        'subforum',
+        'display-name'
     ]
     
     constructor() {
@@ -9,15 +10,18 @@ class SubforumLink extends HTMLElement {
     }
 
     connectedCallback() {
-        const subforum = this.getAttribute('subforum') ?? ''
+        const subforum = this.getAttribute('subforum') ?? '';
+        const displayName = this.getAttribute('display-name') ?? subforum;
 
         this.innerHTML = `
-            <div class="subforum">${subforum}</div>
+            <div class="subforum">${displayName}</div>
         `
 
-        this.addEventListener('click', () => {
-            window.location.href = `subforum.html?forum=${subforum}`
-        })
+        if (subforum !== '') {
+            this.addEventListener('click', () => {
+                window.location.href = subforum
+            })
+        }
     }
 }
 

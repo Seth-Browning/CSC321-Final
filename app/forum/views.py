@@ -16,4 +16,5 @@ def new_thread(request):
 
 def category(request, catName):
     threads = Thread.objects.filter(category__name__iexact = catName).order_by('-created_at')[:30]
-    return render(request, 'forum/subforum.html', {'threads': threads})
+    context = {'threads': threads, 'category': catName}
+    return render(request, 'forum/subforum.html', context)

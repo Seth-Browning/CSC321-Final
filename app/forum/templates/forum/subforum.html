@@ -5,14 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Forum - </title>
-
-    <!-- <script src="../src/components/navbar.js"></script>
-    <script src="../src/components/thread-highlight.js"></script>
-    <script src="../src/utils/common script.js"></script>
-    <script src="../src/scripts/subforum.js" defer></script>
-    <link rel="stylesheet" href="../src/utils/common style.css">
-    <link rel="stylesheet" href="../src/styles/subforum.css"> -->
+    <title>Games Forum - {{ category }}</title>
 
     <script src="{% static 'app/js/navbar.js' %}"></script>
     <script src="{% static 'app/js/thread-highlight.js' %}"></script>
@@ -31,7 +24,7 @@
 
     <div id="loaded-content" data-active="true">
         <div id="subforum-info">
-            <h1 id="subforum-title"></h1>
+            <h1 id="subforum-title">{{ category }}</h1>
         </div>
     
         <section id="pinned-threads" class="new-posts-highlight">

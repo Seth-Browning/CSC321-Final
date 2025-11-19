@@ -35,12 +35,12 @@
         </div>
 
         <div id="subforum-links">
-            <subforum-link subforum="Action"></subforum-link>
-            <subforum-link subforum="Adventure"></subforum-link>
-            <subforum-link subforum="Indie"></subforum-link>
-            <subforum-link subforum="Platformer"></subforum-link>
-            <subforum-link subforum="Puzzle"></subforum-link>
-            <subforum-link subforum="RPG"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='Action' %}" display-name="Action"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='Adventure' %}" display-name="Adventure"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='Indie' %}" display-name="Indie"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='Platformer' %}" display-name="Platformer"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='Puzzle' %}" display-name="Puzzle"></subforum-link>
+            <subforum-link subforum="{% url 'forum_category' catName='RPG' %}" display-name="RPG"></subforum-link>
         </div>
 
         <div class="new-posts-highlight">
