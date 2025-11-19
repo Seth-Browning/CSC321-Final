@@ -22,33 +22,11 @@
 <body>
     <nav-bar></nav-bar>
 
-    <div id="login-container">
-        <form id="login-form">
-            
-            <h1>Log In</h1>
-
-            <div class="input-line">
-                <p class="form-text">Username</p>
-                <input type="text" class="form-input" id="username-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Password</p>
-                <input type="password" class="form-input" id="passowrd-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Remember Me</p>
-                <input type="checkbox" name="" id="remember-user-check">
-            </div>
-            
-            <input type="submit" class="primary-button" value="Log In" id="submit-login">
-        </form>
-
-        <div class="help-line">
-            <p>Forgot your Password? <a href="#">Change it here</a></p>
-            <p>Don't have an account? <a href="./register.html">Sign Up here</a></p>
-        </div>
-    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Log In</button>
+    </form>
+    
 </body>
 </html>

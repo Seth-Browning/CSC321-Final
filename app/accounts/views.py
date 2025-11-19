@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Profile
 from django.http import HttpResponse
+from django.contrib.auth import login
+from .forms import RegisterForm
 
 # Create your views here.
 
-def login(request):
+def login_user(request):
     raise NotImplementedError()
 
 def view_profile(request, username):
@@ -16,4 +18,13 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 def register(request):
-    return render(request, 'accounts/register.html')
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm
+
+    return render(request, 'accounts/register.html', {'form': form})

@@ -22,42 +22,11 @@
 <body>
     <nav-bar></nav-bar>
 
-    <div id="register-container">
-        <form id="register-form">
-            <h1>Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Account</button>
+    </form>
 
-            <div class="input-line">
-                <p class="form-text">Email</p>
-                <input type="email" id="email-input" class="form-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Birthdate</p>
-                <input type="date" id="birthdate-input" class="form-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Username</p>
-                <input type="text" id="username-input" class="form-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Password</p>
-                <input type="password" id="password-input" class="form-input" required>
-            </div>
-
-            <div class="input-line">
-                <p class="form-text">Confirm Password</p>
-                <input type="password" name="" id="password-confirm" class="form-input" required>
-            </div>
-
-            <input type="submit" value="Sign Up" class="primary-button" id="submit-register">
-
-        </form>
-        
-        <div class="help-line">
-            <p>Already have an account? <a href="./login.html">Log in here</a> </p>
-        </div>
-    </div>
 </body>
 </html>
