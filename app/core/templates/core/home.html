@@ -1,1 +1,58 @@
-<h1>Home</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Forum - Home</title>
+    
+    <!-- <script src="../src/utils/common script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/subforum-link.js"></script>
+    <script src="../src/components/thread-highlight.js"></script>
+    <script src="../src/scripts/home.js" defer></script>
+    <link rel="stylesheet" href="../src/utils/common style.css">
+    <link rel="stylesheet" href="../src/styles/home.css"> -->
+
+    <script src="{% static 'app/js/global-script.js' %}"></script>
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/subforum-link.js' %}"></script>
+    <script src="{% static 'app/js/thread-highlight.js' %}"></script>
+    <script src="{% static 'core/js/home.js' %}" defer></script>
+
+    <link rel="stylesheet" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home.css'%}">
+</head>
+<body>
+    <nav-bar></nav-bar>
+
+    <main>
+
+        <div id="title-card">
+            <h1>Games Forum</h1>
+            <button id="post-button" class="primary-button">+ New Post</button>
+        </div>
+
+        <div id="subforum-links">
+            <subforum-link subforum="Action"></subforum-link>
+            <subforum-link subforum="Adventure"></subforum-link>
+            <subforum-link subforum="Indie"></subforum-link>
+            <subforum-link subforum="Platformer"></subforum-link>
+            <subforum-link subforum="Puzzle"></subforum-link>
+            <subforum-link subforum="RPG"></subforum-link>
+        </div>
+
+        <div class="new-posts-highlight">
+            
+            <div class="thread-highlights">
+                <thread-highlight user-name="Random Creator" title="Windwaker Review" thread-id="1"></thread-highlight>
+                <thread-highlight user-name="Zelos" title="Breath of the Wild Review" thread-id="2"></thread-highlight>
+                <thread-highlight user-name="Nintento Enthusiast" title="Mario Odyssey was ahead of its time" thread-id="3"></thread-highlight>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

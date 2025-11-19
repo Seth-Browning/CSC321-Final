@@ -1,0 +1,132 @@
+
+#title-card {
+    background: var(--bg);
+    border: var(--border);
+    border-radius: 5px;
+    display: inline-block;
+    width: 95%;
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xxl);
+    margin-left: 2.5%;
+}
+
+#title-card h1 {
+    color: var(--text);
+}
+
+.new-posts-highlight {
+    display: inline-block;
+    width: 95%;
+    margin: var(--spacing-l);
+    margin-left: 2.5%;
+}
+
+#subforum-links {
+    width: 95%;
+    margin: var(--spacing-s) auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+}
+
+.subforum {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    border: var(--border);
+    padding: var(--spacing-m);
+    color: var(--text);
+    font-weight: bold;
+    font-size: 1.125rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: color 250ms;
+}
+
+.subforum:hover {
+    color: var(--primary);
+}
+
+thread-highlight:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+thread-highlight:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+thread-highlight:nth-child(odd) {
+    background: var(--bg-m-light);
+}
+
+.new-posts-highlight h1 {
+    font-size: var(--spacing-l);
+    background: none;
+}
+
+.thread-highlights {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+thread-highlight {
+    background: var(--bg-light);
+    padding: var(--spacing-s);
+    background: var(--bg);
+}
+
+thread-highlight + thread-highlight {
+    margin-top: 2px;
+}
+
+.thread-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--spacing-xxs);
+}
+
+.thread-top p {
+    display: inline;
+    line-height: 0;
+    padding: 0;
+}
+
+thread-highlight .thread-title {
+    color: var(--text);
+    cursor: pointer;
+    transition: color 250ms;
+}
+
+thread-highlight .thread-title:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+thread-highlight .thread-creator {
+    font-style: italic;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 250ms;
+}
+
+thread-highlight .thread-creator:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.first-thread {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.last-thread {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
