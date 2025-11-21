@@ -71,3 +71,7 @@ form > ul {
     align-self: center;
     margin-top: var(--spacing-l);
 }
+
+.errorlist {
+    color: var(--danger);
+}
