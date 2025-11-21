@@ -1,89 +1,73 @@
-#register-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(200px, 50%, 600px);
-    background: var(--bg);
-    padding: var(--spacing-xl);
-    border-radius: 20px;
-}
-
 form {
+    width: 90%;
+    max-width: 1000px;
+    margin: var(--spacing-s) auto;
+    background: var(--bg);
+    border-radius: 10px;
+    border: var(--border);
     display: flex;
     flex-direction: column;
-    flex-wrap: none;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: var(--spacing-m);
+    gap: var(--spacing-s);
+    padding: var(--spacing-l) var(--spacing-s);
 }
 
-form h1 {
-    color: var(--text);
-    font-weight: bold;
-    align-self: center;
-    font-size: 3em;
-    margin-top: 0;
-    margin-bottom: var(--spacing-m);
-}
-
-.input-line {
-    width: 100%;
+form p {
+    margin: 0;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: none;
-    gap: var(--spacing-s);
+    gap: var(--spacing-xs);
+    align-items: center;
+    height: max-content;
+    flex-wrap:wrap;
+    width: 100%;
+    justify-content: space-between;
 }
 
-.form-text {
-    display: inline;
-    margin: 0;
-    align-self: center;
-    font-weight: bold;
-    flex: 1 0 auto;
-    width: 30%;
-    text-align: right;
-}
-
-.form-input {
-    flex: 1 0 auto;
-    border: 1px var(--bg-dark) solid;
-    background: var(--bg-light);
-    outline: none;
-    font-size: 1rem;
+form p > label {
     color: var(--text);
-    padding: 3px 4px;
-    width: 60%;
-    height: initial;
+    flex: 40%;
 }
 
-input[type="text"], input[type="password"] {
+form p > input[type="text"],
+form p > input[type="email"],
+form p > input[type="password"] {
     font-family: var(--ff);
-    color: var(--text);
-}
-
-input[type="checkbox"] {
-    accent-color: var(--primary);
     background: var(--bg-light);
+    border-radius: 5px;
+    border: var(--border);
+    color: var(--text);
+    font-size: 1rem;
+    padding: var(--spacing-xxs);
+    margin: 0;
+    flex: 50%;
 }
 
-input[type="checkbox"]:hover {
-    cursor: pointer;
-    
+form p > input[type="text"]::after {
+    content: "<br>";
+    white-space: pre;
 }
 
-#submit-register {
-    align-self: center;
-    margin-top: var(--spacing-xs);
-}
-
-.help-line {
-    margin-top: var(--spacing-xxl);
+form p > .helptext {
+    overflow-wrap: break-word;
     text-align: center;
+    font-size: 0.85rem;
+    padding-left: var(--spacing-m);
 }
 
-a {
-    color: var(--secondary);
+form > ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: var(--spacing-m);
+    font-size: 0.85rem;
+    line-height: 1.125rem;
+}
+
+#id_password1_helptext {
+    display: none;
+}
+
+#form-submit {
+    width: 40%;
+    align-self: center;
+    margin-top: var(--spacing-l);
 }

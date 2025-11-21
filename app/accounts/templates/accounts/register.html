@@ -24,8 +24,10 @@
 
     <form method="post">
         {% csrf_token %}
+
         {{ form.as_p }}
-        <button type="submit">Create Account</button>
+
+        <button type="submit" class="primary-button" id="form-submit">Create Account</button>
     </form>
 
 </body>
