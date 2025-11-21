@@ -15,7 +15,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'forum/css/thread.css' %}">
 </head>
 <body>
-    <nav-bar></nav-bar>
+    <nav-bar 
+        logged-in="{{ user.is_authenticated }}"
+        username = "{{ user.username }}"
+        home-link = "{% url 'home' %}"
+        login-link = "{% url 'login' %}"
+        register-link = "{% url 'register' %}">
+    </nav-bar>
 
     <div id="thread-title-container">
         <h1 id="thread-title">Sample Title</h1>

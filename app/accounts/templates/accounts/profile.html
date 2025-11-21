@@ -24,7 +24,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/profile.css' %}">
 </head>
 <body>
-    <nav-bar></nav-bar>
+    <nav-bar 
+        logged-in="{{ user.is_authenticated }}"
+        username = "{{ user.username }}"
+        home-link = "{% url 'home' %}"
+        login-link = "{% url 'login' %}"
+        register-link = "{% url 'register' %}">
+    </nav-bar>
 
     <div id="user-not-found" data-active="false">
         <h1>User Not Found</h1>

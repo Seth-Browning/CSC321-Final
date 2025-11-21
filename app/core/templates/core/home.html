@@ -7,13 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games Forum - Home</title>
     
-    <!-- <script src="../src/utils/common script.js"></script>
-    <script src="../src/components/navbar.js"></script>
-    <script src="../src/components/subforum-link.js"></script>
-    <script src="../src/components/thread-highlight.js"></script>
-    <script src="../src/scripts/home.js" defer></script>
-    <link rel="stylesheet" href="../src/utils/common style.css">
-    <link rel="stylesheet" href="../src/styles/home.css"> -->
 
     <script src="{% static 'app/js/global-script.js' %}"></script>
     <script src="{% static 'app/js/navbar.js' %}"></script>
@@ -25,7 +18,13 @@
     <link rel="stylesheet" href="{% static 'core/css/home.css'%}">
 </head>
 <body>
-    <nav-bar></nav-bar>
+    <nav-bar 
+        logged-in="{{ user.is_authenticated }}"
+        username = "{{ user.username }}"
+        home-link = "{% url 'home' %}"
+        login-link = "{% url 'login' %}"
+        register-link = "{% url 'register' %}">
+    </nav-bar>
 
     <main>
 
@@ -35,7 +34,6 @@
                 <button id="post-button" class="primary-button" data-postURL="{% url 'new_thread' %}">+ New Post</button>
                 <script>
                     const postButton = document.getElementById('post-button')
-                    console.log(postButton.dataset)
                     postButton.addEventListener('click', () => {
                         window.location.href = postButton.dataset.posturl
                     })

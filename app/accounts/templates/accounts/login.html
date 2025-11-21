@@ -20,7 +20,13 @@
 
 </head>
 <body>
-    <nav-bar></nav-bar>
+    <nav-bar 
+        logged-in="{{ user.is_authenticated }}"
+        username = "{{ user.username }}"
+        home-link = "{% url 'home' %}"
+        login-link = "{% url 'login' %}"
+        register-link = "{% url 'register' %}">
+    </nav-bar>
 
     <form method="post">
         {% csrf_token %}
