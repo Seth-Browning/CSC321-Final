@@ -41,8 +41,6 @@ class NavBar extends HTMLElement {
                 </div>` }
             </nav>`
 
-        console.log(this.innerHTML)
-
 
         this.querySelector('#to-login').addEventListener('click', () => {
             window.location.href = loginLink

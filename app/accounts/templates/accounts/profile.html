@@ -32,14 +32,9 @@
         register-link = "{% url 'register' %}">
     </nav-bar>
 
-    <div id="user-not-found" data-active="false">
-        <h1>User Not Found</h1>
-        <h2>We're sorry, but we couldn't find the user you were looking for.</h2>
-    </div>
-
-    <div id="user-info-bar" data-active="false">
+    <div id="user-info-bar" data-active="true">
         <div id="user-info">
-            <p id="user-name">Sample Name</p>
+            <p id="user-name">{{ user.username }}</p>
             <p id="user-joined">Joined: ##/##/####</p>
             <p id="user-bio">Sample bio that should be multiple line long in order to fit longer text fields.</p>
         </div>
