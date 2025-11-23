@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('core.urls')),
     path('forum/', include('forum.urls')),
     path('accounts/', include('accounts.urls')),
+    path('api/', include('api.urls'))
 ]
