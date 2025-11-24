@@ -2,9 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('post-data/<int:pk>', views.view_post_data, name="post-data"),
     path('users/posts/<str:username>', views.posts_by_user),
     path('users/threads/<str:username>', views.threads_by_user),
-    path('threads/<int:pk>', views.thread_data),
-    path('posts/<int:pk>', views.post_data)
+
+    path('threads/', views.thread_list_api),
+    path('threads/<int:pk>', views.thread_detail_api),
+    # path('posts/', views.get_post_data),
+
+    path('report/threads/<int:pk>', views.report_thread),
+    path('report/posts/<int:pk>', views.report_post),
+    path('report/users/<str:username>', views.report_user)
 ]
