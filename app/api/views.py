@@ -191,11 +191,11 @@ def post_detail_api(request: HttpRequest, pk: int):
 
     try:
         post = Post.objects.get(pk = pk)
-    except Thread.DoesNotExist:
+    except Post.DoesNotExist:
         return Response({'errors': 'Post does not exist'}, status=status.HTTP_404_NOT_FOUND)
     
     def is_creator(request: HttpRequest):
-        return request.user.is_authenticated and request.user == post.creator
+        return request.user.is_authenticated and request.user == post.author
     
     if request.method == "GET":
         serializer = PostSerializer(post)
