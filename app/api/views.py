@@ -80,7 +80,7 @@ def thread_detail_api(request: HttpRequest, pk):
     
     if request.method == "GET":
         serializer = ThreadSerializer(thread)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK)
     
     # The Following actions require the requestor be the creator of the thread
 
@@ -91,7 +91,8 @@ def thread_detail_api(request: HttpRequest, pk):
     if request.method == "PUT":
         data = request.data
         thread.title = data.get("title", thread.title)
-        thread.category = data.get("category", thread.category)
+        thread.category = \
+            Category.objects.get(name__iexact=data.get("category", thread.category))
         thread.save()
         return Response({"status":"updated"}, status=status.HTTP_202_ACCEPTED)
     
