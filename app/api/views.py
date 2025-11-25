@@ -98,7 +98,6 @@ def thread_list_api(request: HttpRequest):
         'id': thread.id,
     }, status= status.HTTP_201_CREATED)
 
-
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def thread_detail_api(request: HttpRequest, pk: int):
@@ -146,7 +145,76 @@ def thread_detail_api(request: HttpRequest, pk: int):
         thread.delete()
         return Response({'status': 'deleted'}, status=status.HTTP_202_ACCEPTED)
     
-    return Response({'errors': 'Invalid actions'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    return Response({'errors': 'Invalid action'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+@api_view(["GET", "POST"])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def post_list_api(request: HttpRequest):
+    if request.method == "GET":
+        posts = Post.objects.all().order_by('-created_at')
+        data = [
+            {
+                "id": t.id,
+                "thread": t.thread.id,
+                "author": t.author.username,
+                "content": t.content,
+                "created_at": t.created_at.isoformat()
+            }
+            for t in posts
+        ]
+        return Response(data)
+    
+    if not request.user.is_authenticated:
+        return Response({'errors': "Authenticated Required"}, status=status.HTTP_403_FORBIDDEN)
+    
+    data = request.data
+
+    try:
+        thread = Thread.objects.get(pk= data.get("thread"))
+    except Thread.DoesNotExist:
+        return Response({'errors': "Thread does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    
+    post = Post.objects.create(
+        thread= thread,
+        author= request.user,
+        content = data.get("content")
+    )
+
+    return Response({
+        "status": "Post created",
+        "id": post.id
+    }, status=status.HTTP_201_CREATED)
+
+@api_view(["GET", "PUT", "DELETE"])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def post_detail_api(request: HttpRequest, pk: int):
+
+    try:
+        post = Post.objects.get(pk = pk)
+    except Thread.DoesNotExist:
+        return Response({'errors': 'Post does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    
+    def is_creator(request: HttpRequest):
+        return request.user.is_authenticated and request.user == post.creator
+    
+    if request.method == "GET":
+        serializer = PostSerializer(post)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    if not is_creator(request):
+        return Response({"errors": "Only owner may modify post"}, status=status.HTTP_403_FORBIDDEN)
+    
+    if request.method == "PUT":
+        data = request.data
+        post.content = data.get("content", post.content)
+        post.save()
+        return Response({"status": "updated"}, status=status.HTTP_202_ACCEPTED)
+    
+    if request.method == "DELETE":
+        post.delete()
+        return Response({"status": "removed"}, status=status.HTTP_202_ACCEPTED)
+    
+    return Response({"errors": "Invalid action"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 @api_view(["POST"])
