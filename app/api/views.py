@@ -8,15 +8,42 @@ from rest_framework.response import Response
 from rest_framework import status
 
 @api_view(["GET"])
-def posts_by_user(request, username):
-    # posts = get_list_or_404(Post, author__username = username)
+def posts_by_user(request: HttpRequest, username: str):
+    """
+    Gets all posts made by the specified user.
+
+    Args:
+        request (HttpRequest): The request object the API uses for responses.
+        username (str): The name of the user whose posts are being filtered.
+
+    Returns:
+        Response: The list of the posts made by the user
+
+    Note:
+        This API function only accepts requests using the "GET" method.
+    """
+
     posts = Post.objects.filter(author__username = username)
     serialized_posts = PostSerializer(posts, many=True)
     return Response(serialized_posts.data)
 
 @api_view(["GET"]) 
-def threads_by_user(request, username):
-    # threads = get_list_or_404(Thread, creator__username = username)
+def threads_by_user(request: HttpRequest, username: str) -> Response:
+    """
+    Gets all posts made by the specified user.
+
+    Args:
+        request (HttpRequest): Object containing all information about the request.
+        username (str): The user whose threads are being filtered for.
+    
+    Returns:
+        Response: The list of the threads made by the user
+
+    Note:
+        This API function only accepts requests using the "GET" method.
+
+    """
+    
     threads = Thread.objects.filter(creator__username = username)
     serialized_threads = ThreadSerializer(threads, many = True)
     return Response(serialized_threads.data)
@@ -25,8 +52,16 @@ def threads_by_user(request, username):
 @permission_classes([IsAuthenticatedOrReadOnly])
 def thread_list_api(request: HttpRequest):
     """
-    API endpoint for threads in general. GET requests list all threads,
-    POST request create a new thread
+    Either lists all threads, or creates a new thread, depending on the request's method.
+
+    Args:
+        request (HttpRequest): Object containing all information about the request,
+            including whether all threads should be listed or if a new thread should
+            be created
+
+    Notes:
+        This API function only accepts requests using the "GET" or "POST" method. The
+        requestor has to be authorized to make a new thread.
     """
     
     if request.method == "GET":
@@ -34,7 +69,9 @@ def thread_list_api(request: HttpRequest):
         data= [
             {
                 "id": t.id,
-                "category": t.category.name,
+                "category": t.category.name,    
+                # Since `category` is a foreign key, you need to reach through it to its name
+                
                 "title": t.title,
                 "creator": t.creator.username,
                 "created_at": t.created_at.isoformat()
@@ -64,16 +101,25 @@ def thread_list_api(request: HttpRequest):
 
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticatedOrReadOnly])
-def thread_detail_api(request: HttpRequest, pk):
+def thread_detail_api(request: HttpRequest, pk: int):
     """
-    API endpoint for a specific thread.
+    Gets, Updates, or Deletes a thread depending on the request's method. Updates and deletes
+    will only be applied if the requestor is authenticated and they're the creator of the thread.
+
+    Args:
+        request (HttpRequest): Object containing all of the inforamtion about the request.
+            If the method type is "PUT", then the request's body should contain the data,
+            to update the thread.
+        pk (int): The key for the thread that is being acted on.
+    
+    Nots:
+        This API function only supports the "GET", "PUT", and "DELETE" request methods.
     """
 
     try:
         thread = Thread.objects.get(pk = pk)
     except Thread.DoesNotExist:
         return Response({'error': "Post does not exist"}, status=status.HTTP_404_NOT_FOUND)
-    
 
     def is_creator(request):
         return request.user.is_authenticated and request.user == thread.creator
@@ -99,6 +145,8 @@ def thread_detail_api(request: HttpRequest, pk):
     if request.method == "DELETE":
         thread.delete()
         return Response({'status': 'deleted'}, status=status.HTTP_202_ACCEPTED)
+    
+    return Response({'errors': 'Invalid actions'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 @api_view(["POST"])
