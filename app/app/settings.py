@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'forum',
     'core.apps.CoreConfig',
+    'api',
     'rest_framework'
 ]
 
