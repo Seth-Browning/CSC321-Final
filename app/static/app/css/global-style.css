@@ -181,3 +181,13 @@ nav {
 .home-page-link a:hover {
     color: var(--secondary);
 }
+
+.logged-in-username {
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 100ms;
+}
+
+.logged-in-username:hover {
+    color: var(--primary);
+}
