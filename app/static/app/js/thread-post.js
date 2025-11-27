@@ -3,7 +3,8 @@ class ThreadPost extends HTMLElement {
     static observedAttributes = [
         "user-name",
         "message",
-        'active'
+        'active',
+        'profile-url'
     ]
 
     constructor() {
@@ -14,6 +15,7 @@ class ThreadPost extends HTMLElement {
         const name = this.getAttribute('user-name') ?? ""
         const message = this.getAttribute('message') ?? ""
         const active = this.getAttribute('active') ?? 'true';
+        const profileURL = this.getAttribute('profile-url') ?? '/'
 
         this.innerHTML = `
             <article class="thread-entry main-post">
@@ -31,7 +33,7 @@ class ThreadPost extends HTMLElement {
         `
         if (active === "true") {
             this.querySelector('.user-name').addEventListener('click', () => {
-                window.location.href = `profile.html?user=${name}`
+                window.location.href = profileURL
             })
         }
     }

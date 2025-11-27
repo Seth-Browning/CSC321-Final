@@ -25,12 +25,18 @@
     </nav-bar>
 
     <div id="thread-title-container">
-        <h1 id="thread-title">Sample Title</h1>
+        <h1 id="thread-title">{{thread.title}}</h1>
     </div>
 
     <div id="thread-content">
 
-
+        {% for post in posts %}
+            <thread-post 
+                user-name="{{ post.author.username }}"
+                message="{{ post.content }}"
+                profile-url="{% url 'profile-by-username' post.author.username %}">
+            </thread-post>
+        {% endfor %}
 
     </div>
 
