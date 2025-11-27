@@ -1,7 +1,8 @@
 
 class TextEditor extends HTMLElement {
     static observedAttributes = [
-        'confirm-button-text'
+        'confirm-button-text',
+        'include-title-input'
     ]
 
     constructor() {
@@ -10,10 +11,18 @@ class TextEditor extends HTMLElement {
 
     connectedCallback() {
         const submitText = this.getAttribute('confirm-button-text') ?? "Submit"
+        const includeTitleInput = this.getAttribute('include-title-input') ?? "false"
+
+        let titleBarText = "";
+        if (includeTitleInput === "true") {
+            titleBarText = `<input type="text" placeholder="Title..." class="title-data" maxlength="200">`
+        }
+
 
         this.innerHTML = `
             <div class="text-editor">
-                <div class="editable-text-field" contenteditable="true"></div>
+                ${titleBarText}
+                <div class="editable-text-field main-data" contenteditable="true"></div>
                 <div class="button-bar">
                     <button type="submit" class="primary-button">${submitText}</button>
                     <button class="danger-button">Cancel</button>
@@ -24,7 +33,8 @@ class TextEditor extends HTMLElement {
         this.querySelector('button[type="submit"].primary-button').addEventListener('click', () => {
             this.dispatchEvent(new CustomEvent('text-editor-submit', {
                 detail: {
-                    text: this.querySelector('.editable-text-field').innerText
+                    title: includeTitleInput === "true" ?  this.querySelector('.title-data').value : "",
+                    text: this.querySelector('.editable-text-field.main-data').innerText
                 }
             }))
         })

@@ -7,11 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def thread_detail(request, pk):
-
-
     thread = get_object_or_404(Thread, pk = pk)
-    posts = Post.objects.filter(thread__pk = pk).order_by('created_at')[:30]
-    # default amount of posts is 30, more can be requested from the API
+    posts = Post.objects.filter(thread__pk = pk).order_by('created_at')
 
     return render(request, 'forum/thread.html', {'thread': thread, 'posts': posts})
 

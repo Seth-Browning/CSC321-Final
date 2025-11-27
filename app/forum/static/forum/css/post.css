@@ -50,6 +50,17 @@
     outline: none;
 }
 
+.title-data {
+    border: 1px var(--text) solid;
+    width: 100%;
+    padding: var(--spacing-s);
+    border-radius: 10px;
+    background: var(--bg-m-light);
+    color: var(--text);
+    font-family: var(--ff);
+    font-size: 1.25rem;
+}
+
 .button-bar {
     display: flex;
     gap: var(--spacing-s);

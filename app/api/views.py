@@ -133,6 +133,7 @@ def thread_detail_api(request: HttpRequest, pk: int):
         return Response({'error': "Only the creator may modify threads"}, 
                         status= status.HTTP_403_FORBIDDEN)
 
+    # Update the Thread's information
     if request.method == "PUT":
         data = request.data
         thread.title = data.get("title", thread.title)
