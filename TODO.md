@@ -1,7 +1,31 @@
 - Clean Up login from importing midterm files
     - Have templates inject information they get from views
-    - clean up links so that the user can navigate between them
+    - clean up links so that the user can navigate between them ✅
 
-- Add login functionality (Somewhat)
+- Add login functionality ✅
+- Make logout easier
 
 - Add API
+    - Threads
+        - Make new threads ✅
+        - See thread information ✅
+        - Edit Threads ✅
+        - Delete Threads ✅
+    - Posts
+        - Make new posts ✅
+        - See post information ✅
+        - Edit posts ✅
+        - Delete Posts ✅
+    - Reports
+        - Make new reports ✅
+        - See report information (admin only) ✅
+        - Resolve reports (admin only) ✅
+    - User
+        - Change Bio
+        - Change password
+        - Recover Password
+        - Two-factor auth
+
+- Connect API to frontend
+    - Make threads ✅
+    - Make initial posts on new threads ✅
