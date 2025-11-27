@@ -1,8 +1,9 @@
 class ThreadHighlight extends HTMLElement {
     static observedAttributes = [
         "user-name",
+        "user-profile-link",
         "title",
-        "thread-id"
+        "thread-link"
     ]
 
     constructor() {
@@ -12,7 +13,8 @@ class ThreadHighlight extends HTMLElement {
     connectedCallback() {
         const title = this.getAttribute('title')
         const poster = this.getAttribute('user-name')
-        const threadId = this.getAttribute('thread-id')
+        const posterProfileURL = this.getAttribute('user-profile-link') ?? "/"
+        const threadLink = this.getAttribute("thread-link") ?? "/"
 
         this.innerHTML = `
             <style>
@@ -28,11 +30,11 @@ class ThreadHighlight extends HTMLElement {
         `
 
         this.querySelector('.thread-title').addEventListener('click', () => {
-            window.location.href = `thread.html?id=${threadId}`
+            window.location.href = threadLink
         })
 
         this.querySelector('.thread-creator').addEventListener('click', () => {
-            window.location.href = `profile.html?user=${poster}`
+            window.location.href = posterProfileURL
         })
     }
 }

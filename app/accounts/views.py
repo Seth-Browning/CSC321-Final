@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Profile
+from forum.models import Thread, Post
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -11,7 +12,8 @@ from .forms import RegisterForm
 def view_profile(request, username):
     print(username)
     profile = get_object_or_404(Profile, user__username = username)
-    return render(request, 'accounts/profile.html', {'profile': profile})
+    threads = Thread.objects.filter(creator__username = username)
+    return render(request, 'accounts/profile.html', {'profile': profile, 'threads': threads})
 
 def login(request):
     return render(request, 'accounts/login.html')

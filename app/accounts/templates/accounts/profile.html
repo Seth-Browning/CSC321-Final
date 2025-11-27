@@ -7,14 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>_'s Profile</title>
 
-    <!-- <script src="../src/utils/common script.js"></script>
-    <script src="../src/components/navbar.js"></script>
-    <script src="../src/components/thread-highlight.js"></script>
-    <script src="../src/scripts/profile.js" defer></script>
-    <link rel="stylesheet" href="../src/utils/common style.css">
-    <link rel="stylesheet" href="../src/styles/home.css">
-    <link rel="stylesheet" href="../src/styles/profile.css"> -->
-
     <script src="{% static 'app/js/global-script.js' %}"></script>
     <script src="{% static 'app/js/navbar.js' %}"></script>
     <script src="{% static 'app/js/thread-highlight.js' %}"></script>
@@ -35,9 +27,9 @@
 
     <div id="user-info-bar" data-active="true">
         <div id="user-info">
-            <p id="user-name">{{ user.username }}</p>
-            <p id="user-joined">Joined: ##/##/####</p>
-            <p id="user-bio">Sample bio that should be multiple line long in order to fit longer text fields.</p>
+            <p id="user-name">{{ profile.user.username }}</p>
+            <p id="user-joined">Joined: {{ profile.user.date_joined }}</p>
+            <p id="user-bio">{{ profile.user.bio }}</p>
         </div>
 
         <div id="user-connections">
@@ -58,7 +50,17 @@
     <!-- Populated by JS from the database -->
     <div class="new-posts-highlight">
         <h1>Threads</h1>
-        <div class="thread-highlights" id="thread-highlights"></div>
+        <div class="thread-highlights" id="thread-highlights">
+
+            {% for thread in threads %}
+                <thread-highlight 
+                    user-name="{{ profile.user.username }}"
+                    user-profile-link="{% url 'profile-by-username' thread.creator.username %}" 
+                    title="{{ thread.title }}"
+                    thread-link="{% url 'thread_detail' thread.id %}"></thread-highlight>
+            {% endfor %}
+
+        </div>
     </div>
 </body>
 </html>
