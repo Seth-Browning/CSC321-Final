@@ -53,9 +53,13 @@
         <div class="new-posts-highlight">
             
             <div class="thread-highlights">
-                <thread-highlight user-name="Random Creator" title="Windwaker Review" thread-id="1"></thread-highlight>
-                <thread-highlight user-name="Zelos" title="Breath of the Wild Review" thread-id="2"></thread-highlight>
-                <thread-highlight user-name="Nintento Enthusiast" title="Mario Odyssey was ahead of its time" thread-id="3"></thread-highlight>
+                {% for thread in threads %}
+                    <thread-highlight
+                        user-name="{{ thread.creator.username }}"
+                        user-profile-link="{% url 'profile-by-username' thread.creator.username %}"
+                        title="{{ thread.title }}"
+                        thread-link="{% url 'thread_detail' thread.id %}"></thread-highlight>
+                {% endfor %}
             </div>
         </div>
 
