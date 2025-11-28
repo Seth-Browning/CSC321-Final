@@ -32,12 +32,18 @@ class NavBar extends HTMLElement {
         if (loggedIn === "True") {
             navBarOptions = `
             <div id="logged-in-options" class="nav-log-dependent" data-active="true">
-                <p class="logged-in-username">${username}</p>
+                <div class="nav-dropdown">
+                    <p class="logged-in-username">${username}</p>
+                    <div class="nav-dropdown-content">
+                        <a>Settings</a>
+                        <a href="/accounts/logout">Log out</a>
+                    </div>
+                </div>
             </div>` 
         } else {
             navBarOptions = `
             <div id="log-in-options" class="nav-log-dependent" data-active="true">
-                <button class="primary-button to-login" >Log In</button>
+                <button class="primary-button to-login">Log In</button>
                 <button class="secondary-button to-signup">Sign Up</button>
             </div>`
         }

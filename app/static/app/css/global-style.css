@@ -191,3 +191,42 @@ nav {
 .logged-in-username:hover {
     color: var(--primary);
 }
+
+.nav-dropdown {
+    min-width: 200px;
+    text-align: right;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+    display: block;
+}
+
+.nav-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0.75em;
+    background: var(--bg-m-light);
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 5px;
+    border: var(--border);
+    padding: var(--spacing-xs);
+}
+
+.nav-dropdown-content a {
+    display: block;
+    text-align: left;
+    color: var(--text);
+    float: none;
+    padding: var(--spacing-xs) var(--spacing-s);
+    cursor: pointer;
+    transition: color 100ms;
+    transition: background 100ms;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-dropdown-content a:hover {
+    background: var(--bg-light);
+    color: var(--primary);
+}
