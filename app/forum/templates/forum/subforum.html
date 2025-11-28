@@ -35,13 +35,19 @@
     
         <section id="pinned-threads" class="new-posts-highlight">
             <div class="thread-highlights">
-                <thread-highlight user-name="moderator" title="Site Rules" thread-id="0"></thread-highlight>
+                <!-- <thread-highlight user-name="moderator" title="Site Rules" thread-id="0"></thread-highlight> -->
             </div>
         </section>
     
         <section id="recent-threads" class="new-posts-highlight">
             <div id="forum-posts" class="thread-highlights">
-    
+                {% for thread in threads %}
+                    <thread-highlight
+                        user-name="{{ thread.creator.username }}"
+                        user-profile-link="{% url 'profile-by-username' thread.creator.username %}"
+                        title="{{ thread.title }}"
+                        thread-link="{% url 'thread_detail' thread.id %}"></thread-highlight>
+                {% endfor %}
             </div>
         </section>
     </div>
