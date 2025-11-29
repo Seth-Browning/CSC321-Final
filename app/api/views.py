@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404
-from django.http import JsonResponse, HttpResponse, HttpRequest
+from django.http import JsonResponse, HttpRequest
 from django.db.models import Q
 
 from .serializers import PostSerializer, ThreadSerializer, ThreadSerializer_NoPosts
@@ -9,6 +8,10 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework import status
+
+# +----------------------------------------------------------------------------
+# |     User endpoints
+# +----------------------------------------------------------------------------
 
 @api_view(["GET"])
 def posts_by_user(request: HttpRequest, username: str):
@@ -50,6 +53,10 @@ def threads_by_user(request: HttpRequest, username: str) -> Response:
     threads = Thread.objects.filter(creator__username = username)
     serialized_threads = ThreadSerializer(threads, many = True)
     return Response(serialized_threads.data)
+
+# +----------------------------------------------------------------------------
+# |     Thread endpoints
+# +----------------------------------------------------------------------------
 
 @api_view(["GET", "POST"])
 @permission_classes([IsAuthenticatedOrReadOnly])
@@ -151,6 +158,10 @@ def thread_detail_api(request: HttpRequest, pk: int):
     
     return Response({'errors': 'Invalid action'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+# +----------------------------------------------------------------------------
+# |     Post endpoints
+# +----------------------------------------------------------------------------
+
 @api_view(["GET", "POST"])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def post_list_api(request: HttpRequest):
@@ -249,7 +260,9 @@ def post_detail_api(request: HttpRequest, pk: int):
     
     return Response({"errors": "Invalid action"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-
+# +----------------------------------------------------------------------------
+# |     Seach endpoints
+# +----------------------------------------------------------------------------
 
 @api_view(["GET"])
 def search(request: HttpRequest):
@@ -299,6 +312,9 @@ def search(request: HttpRequest):
 
     return JsonResponse({"posts": posts_serial, "threads": threads_serial}, status=status.HTTP_200_OK)
 
+# +----------------------------------------------------------------------------
+# |     Report endpoints
+# +----------------------------------------------------------------------------
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
