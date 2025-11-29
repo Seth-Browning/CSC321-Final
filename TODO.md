@@ -1,5 +1,5 @@
 - Clean Up login from importing midterm files
-    - Have templates inject information they get from views
+    - Have templates inject information they get from views ✅
     - clean up links so that the user can navigate between them ✅
 
 - Add login functionality ✅
@@ -29,8 +29,9 @@
 - Connect API to frontend
     - Make threads ✅
     - Make initial posts on new threads ✅
-    - Make new posts on existing threads
+    - Make new posts on existing threads ✅
     - Edit posts user made
     - Edit threads user made
     - Delete posts user made
     - Delete threads user made
+    - Make Reports
