@@ -40,10 +40,16 @@
 
     </div>
 
-    <div id="comment-area">
-        <h1>Comment</h1>
-        <text-editor confirm-button-text="Comment"></text-editor>
-    </div>
+    {% if user.is_authenticated %}
+        <div id="comment-area">
+            <h1>Comment</h1>
+            <text-editor confirm-button-text="Comment"></text-editor>
+        </div>
+    {% endif %}
+
+    <script>
+        const threadId = '{{ thread.id }}'
+    </script>
 
 </body>
 </html>

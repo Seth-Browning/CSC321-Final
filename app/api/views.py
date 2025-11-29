@@ -195,6 +195,9 @@ def post_list_api(request: HttpRequest):
     if not request.user.is_authenticated:
         return Response({'errors': "Authenticated Required"}, status=status.HTTP_403_FORBIDDEN)
     
+    if request.method != "POST":
+        return Response({"errors": "Bad Request"}, status=status.HTTP_400_BAD_REQUEST)
+
     data = request.data
 
     try:
