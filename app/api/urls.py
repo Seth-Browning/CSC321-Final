@@ -12,5 +12,7 @@ urlpatterns = [
 
     path('report/threads/<int:pk>', views.report_thread),
     path('report/posts/<int:pk>', views.report_post),
-    path('report/users/<str:username>', views.report_user)
+    path('report/users/<str:username>', views.report_user),
+
+    path('search/', views.search)
 ]

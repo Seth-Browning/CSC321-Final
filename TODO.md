@@ -3,7 +3,7 @@
     - clean up links so that the user can navigate between them ✅
 
 - Add login functionality ✅
-- Make logout easier
+- Make logout easier ✅
 
 - Add API
     - Threads

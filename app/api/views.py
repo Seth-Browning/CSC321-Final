@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import JsonResponse, HttpResponse, HttpRequest
+from django.db.models import Q
+
 from .serializers import PostSerializer, ThreadSerializer
 from forum.models import Post, Thread, Category
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -216,6 +219,47 @@ def post_detail_api(request: HttpRequest, pk: int):
         return Response({"status": "removed"}, status=status.HTTP_202_ACCEPTED)
     
     return Response({"errors": "Invalid action"}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+
+@api_view(["GET"])
+def search(request: HttpRequest):
+    q = request.GET.get("q", "")
+
+    threads = Thread.objects.filter(
+        Q(title__icontains= q) |
+        Q(category__name__icontains= q) |
+        Q(posts__content__icontains= q)
+    ).distinct()
+
+    threads_serial = [
+        {
+            "id": t.id,
+            "category": t.category.name,
+            "creator": t.creator.username,
+            "title": t.title,
+            "created_at": t.created_at.isoformat()
+        }
+        for t in threads
+    ]
+
+    posts = Post.objects.filter(
+        Q(content__icontains= q) |
+        Q(author__username__icontains= q)
+    )
+
+    posts_serial = [
+        {
+            "id": t.id,
+            "thread": ThreadSerializer(t.thread).data,
+            "author": t.author.username,
+            "content": t.content,
+            "created_at": t.created_at.isoformat()
+        }
+        for t in posts
+    ]
+
+    return JsonResponse({"posts": posts_serial, "threads": threads_serial}, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
