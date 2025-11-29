@@ -16,3 +16,11 @@ class ThreadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thread
         fields = ['id', 'category', 'title', 'creator', 'created_at', 'posts']
+
+class ThreadSerializer_NoPosts(serializers.ModelSerializer):
+    creator = serializers.StringRelatedField()
+    category = serializers.StringRelatedField()
+
+    class Meta:
+        model = Thread
+        fields = ["id", "category", "title", "creator", "created_at"]

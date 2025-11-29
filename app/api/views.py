@@ -2,7 +2,7 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.http import JsonResponse, HttpResponse, HttpRequest
 from django.db.models import Q
 
-from .serializers import PostSerializer, ThreadSerializer
+from .serializers import PostSerializer, ThreadSerializer, ThreadSerializer_NoPosts
 from forum.models import Post, Thread, Category
 
 from rest_framework.decorators import api_view, permission_classes
@@ -251,7 +251,7 @@ def search(request: HttpRequest):
     posts_serial = [
         {
             "id": t.id,
-            "thread": ThreadSerializer(t.thread).data,
+            "thread": ThreadSerializer_NoPosts(t.thread).data,
             "author": t.author.username,
             "content": t.content,
             "created_at": t.created_at.isoformat()
