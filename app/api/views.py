@@ -154,6 +154,19 @@ def thread_detail_api(request: HttpRequest, pk: int):
 @api_view(["GET", "POST"])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def post_list_api(request: HttpRequest):
+    """
+    Depending on the request method: either lists all posts, or the endpoint
+    used for creating a new post. All posts must be attached to a thread,
+    there is no such thing as an "orphan post."
+
+    Args:
+        request (HttpRequest): The object containing all the information
+            for the request. The request's method determines the behavior.
+            If a new post is being created, the thread id and post content
+            must be given through a POST request.
+
+    """
+
     if request.method == "GET":
         posts = Post.objects.all().order_by('-created_at')
         data = [
@@ -192,6 +205,22 @@ def post_list_api(request: HttpRequest):
 @api_view(["GET", "PUT", "DELETE"])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def post_detail_api(request: HttpRequest, pk: int):
+    """
+    Depending on the method: Retrieves a posts's information, update's a 
+    posts's content, or deletes a post.
+
+    Args:
+        request (HttpRequest):
+            The request, containing the method and, if the method is `PUT`,
+            the new content for the post.
+
+        pk (int):
+            The id of the post being accessed.
+    
+    Returns:
+        If the request method was POST, then the inforamation from the specified
+        post. Otherwise, a simple status object is returned.
+    """
 
     try:
         post = Post.objects.get(pk = pk)
@@ -224,6 +253,15 @@ def post_detail_api(request: HttpRequest, pk: int):
 
 @api_view(["GET"])
 def search(request: HttpRequest):
+    """
+    Searches threads and posts for content that contains the text given
+    by the `?q=` URL parameter.
+
+    Args:
+        request (HttpRequest): The URL object containing the `?q=`
+            parameter, which defines what content to seatch for.
+    """
+
     q = request.GET.get("q", "")
 
     threads = Thread.objects.filter(
