@@ -3,6 +3,7 @@ from django.db.models import Q
 
 from .serializers import PostSerializer, ThreadSerializer, ThreadSerializer_NoPosts
 from forum.models import Post, Thread, Category
+from accounts.models import Profile
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -53,6 +54,61 @@ def threads_by_user(request: HttpRequest, username: str) -> Response:
     threads = Thread.objects.filter(creator__username = username)
     serialized_threads = ThreadSerializer(threads, many = True)
     return Response(serialized_threads.data)
+
+@api_view(["GET", "PUT", "DELETE"])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def user_detail_api(request: HttpRequest, username: str) -> Response:
+    """
+    Depending on the request method, gets/modifies user information, or deletes
+    a user.
+
+    Args:
+        request (HttpRequest)
+            Contains request information, such as the method and desited action.
+            - `GET` will return user information
+            - `PUT` will modify user data
+            - `DELETE` will delete the user
+        username (str):
+            Needed to change that specific user's information
+    
+    Returns:
+        If the request method was `GET`, then the information for the specified
+        user will be returned. Otherwise status information will be returned.
+    
+    Notes:
+        Both the `PUT` and `DELETE` methods will only be accepted if the request 
+        sender is the user whose information is being modified/deleted.
+    """
+
+    try:
+        user_profile = Profile.objects.get(user__username= username)
+    except Profile.DoesNotExist:
+        return Response({"error": "Couldn't find user."}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == "GET":
+        return Response({
+            "username": user_profile.user.username,
+            "date_joined": user_profile.user.date_joined,
+            "bio": user_profile.bio,
+            "following": user_profile.following.count()
+        }, status=status.HTTP_200_OK)
+    
+    # All other methods require the requesting user to be the user for the account
+    if not request.user.is_authenticated or request.user.username != username:
+        return Response({"error": "Action not allowed"}, status=status.HTTP_403_FORBIDDEN)
+    
+    if request.method == "PUT":
+        data = request.data
+        user_profile.bio = data.get("bio", user_profile.bio)
+        user_profile.avatar = data.get("avatar", user_profile.avatar)
+        user_profile.save()
+        return Response({"status": "Updated"}, status=status.HTTP_200_OK)
+    
+    if request.method == "DELETE":
+        user_profile.user.delete()
+        user_profile.delete()
+        return Response({"status": "Deleted"}, status=status.HTTP_200_OK)
+
 
 # +----------------------------------------------------------------------------
 # |     Thread endpoints
