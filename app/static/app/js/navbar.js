@@ -35,7 +35,7 @@ class NavBar extends HTMLElement {
                 <div class="nav-dropdown">
                     <p class="logged-in-username">${username}</p>
                     <div class="nav-dropdown-content">
-                        <a>Settings</a>
+                        <a href="/accounts/settings">Settings</a>
                         <a href="/accounts/logout">Log out</a>
                     </div>
                 </div>
