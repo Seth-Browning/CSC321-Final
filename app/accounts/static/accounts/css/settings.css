@@ -1,0 +1,49 @@
+#settings-card {
+    width: 80%;
+    margin: var(--spacing-s) auto;
+    background: var(--bg);
+    border: var(--border);
+    border-radius: 20px;
+    padding: var(--spacing-m);
+    display: grid;
+    grid-template-columns: 150px 5fr;
+    grid-template-rows: auto 50px;
+    grid-template-areas: "sidebar settings" "footer footer"
+}
+
+#setting-select {
+    grid-area: sidebar;
+    background: var(--bg-m-light);
+    border-radius: 10px;
+}
+
+#setting-select ul {
+    list-style: none;
+    padding: var(--spacing-xs);
+}
+
+#setting-select li {
+    margin: var(--spacing-xs);
+    padding: var(--spacing-s);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+#setting-select li:hover,
+#setting-select .active {
+    background: var(--bg-light);
+}
+
+#main-settings {
+    grid-area: settings;
+}
+
+#setting-options {
+    grid-area: footer;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-s);
+    align-items: center;
+    justify-content: flex-end;
+}

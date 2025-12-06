@@ -151,6 +151,26 @@ nav {
     border-radius: 4px;
 }
 
+.success-button {
+    cursor: pointer;
+    background: var(--success);
+    border: 1px var(--success) solid;
+    padding: var(--spacing-xs);
+    color: var(--text);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.neutral-button {
+    cursor: pointer;
+    background: var(--bg-light);
+    border: var(--border);
+    padding: var(--spacing-xs);
+    color: var(--text);
+    font-weight: bold;
+    border-radius: 4px;
+}
+
 .icon {
     fill: var(--text);
     width: 40px;
