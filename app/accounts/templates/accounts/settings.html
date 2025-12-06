@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+
+    <script src="{% static 'app/js/global-script.js' %}"></script>
+    <script src="{% static 'app/js/navbar.js' %}"></script>
+    <script src="{% static 'app/js/text-editor.js' %}"></script>
+    <script src="{% static 'accounts/js/settings.js' %}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/global-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/settings.css' %}">
+
+</head>
+<body>
+    <nav-bar 
+        logged-in="{{ user.is_authenticated }}"
+        username = "{{ user.username }}"
+        home-link = "{% url 'home' %}"
+        login-link = "{% url 'login' %}"
+        register-link = "{% url 'register' %}">
+    </nav-bar>
+    
+</body>
+</html>

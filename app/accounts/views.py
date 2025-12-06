@@ -33,3 +33,7 @@ def register(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+@login_required
+def settings(request):
+    return render(request, 'accounts/settings.html')
