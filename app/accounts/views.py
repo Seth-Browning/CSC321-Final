@@ -15,9 +15,6 @@ def view_profile(request, username):
     threads = Thread.objects.filter(creator__username = username)
     return render(request, 'accounts/profile.html', {'profile': profile, 'threads': threads})
 
-def login(request):
-    return render(request, 'accounts/login.html')
-
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -26,7 +23,7 @@ def register(request):
             login(request, user)
             return redirect('home')
     else:
-        form = RegisterForm
+        form = RegisterForm()
 
     return render(request, 'accounts/register.html', {'form': form})
 
