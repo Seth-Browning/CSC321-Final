@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpRequest
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from .forms import RegisterForm
+from .forms import RegisterForm, UsernameChangeForm
 
 # Create your views here.
 
@@ -50,3 +50,15 @@ def change_password(request: HttpRequest):
         form = PasswordChangeForm(request.user)
 
     return render(request, 'accounts/change_password.html', {'form': form})
+
+@login_required
+def change_username(request: HttpRequest):
+    if request.method == "POST":
+        form = UsernameChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UsernameChangeForm(instance=request.user)
+    
+    return render(request, 'accounts/change_username.html', {'form': form})
