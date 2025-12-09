@@ -51,11 +51,17 @@
         <section id="main-settings">
             <div class="setting-card" data-value="account" data-active="true">
                 <div class="setting-chunk">
-                    <h1 class="setting-title">Change Password</h1>
+                    <h1 class="setting-title">Account Info</h1>
                     <hr>
 
                     <div class="setting-option">
-                        <button id="change-password-button" class="primary-button" data-destination="{% url 'change_password' %}">Change Password</button>
+                        <p class="setting-text">Reset the Username on your account</p>
+                        <button id="change-username-button" class="primary-button" data-destiantion="{% url 'change_username' %}">Change Username</button>
+                    </div>
+
+                    <div class="setting-option">
+                        <p class="setting-text">Reset the Password on your account</p>
+                        <button id="change-password-button" class="secondary-button" data-destination="{% url 'change_password' %}">Change Password</button>
                     </div>
                 </div>
 

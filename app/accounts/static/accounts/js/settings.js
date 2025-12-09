@@ -88,3 +88,7 @@ document.querySelector('#change-password-button').addEventListener('click', () =
     const dest = document.querySelector('#change-password-button').dataset.destination
     window.location.href = dest
 })
+
+document.querySelector('#change-username-button').addEventListener('click', () => {
+    window.location.href = "/accounts/change-username/"
+})
