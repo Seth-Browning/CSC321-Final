@@ -24,6 +24,11 @@
         register-link = "{% url 'register' %}">
     </nav-bar>
 
+    <script>
+        const CURRENT_USERNAME = "{{ user.username }}"
+        const HOME_PAGE = "{% url 'home' %}"
+    </script>
+
     <!--
         Profile Settings
         - Change Bio
@@ -35,18 +40,41 @@
         - Change password
         - Delete account
     -->
+    
+    <dialog id="delete-account-warning" closed>
+        <p>Warning! Deleting your account is irreversible, are you sure you want to delete?</p>
+
+        <div class="button-row">
+            <button class="danger-button">Confirm Deletion</button>
+            <button class="secondary-button">Cancel</button>
+        </div>
+    </dialog>
 
     <div id="settings-card">
         <aside id="setting-select">
             <ul>
-                <li>Account</li>
-                <li>Privacy</li>
-                <li>Profile</li>
+                <li data-value="account">Account</li>
+                <!-- <li>Privacy</li> -->
+                <li data-value="profile">Profile</li>
             </ul>
         </aside>
 
         <section id="main-settings">
+            <div class="setting-card" data-value="account">
+                <div class="setting-option">
+                    <button class="primary-button" id="reset-password-setting">Reset Password</button>
+                </div>
 
+                <div class="setting-option setting-danger">
+                    <button class="danger-button" id="delete-account-setting">Delete Account</button>
+                </div>
+            </div>
+
+            <div class="setting-card" data-value="profile">
+                <div class="setting-option">
+                    <text-editor confirm-button-text="Change Bio"></text-editor>
+                </div>
+            </div>
         </section>
 
         <div id="setting-options">
