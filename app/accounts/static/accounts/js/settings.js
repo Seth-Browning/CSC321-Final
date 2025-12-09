@@ -51,3 +51,34 @@ document.querySelectorAll('#setting-select li').forEach(category => {
         category.classList.add('active')
     })
 })
+
+const bioTextEditor = document.querySelector('#bio-text-editor')
+
+bioTextEditor.addEventListener('text-editor-submit', async (e) => {
+    const submittedText = e.detail.text
+
+    if (submittedText.trim() === "") return;
+    console.log(submittedText)
+
+    // update bio
+    const response = await fetch(`/api/users/${CURRENT_USERNAME}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": 'application/json',
+            "X-CSRFToken": csrftoken
+        },
+        body: JSON.stringify({
+            bio: submittedText
+        })
+    })
+
+    if (!response.ok) {
+        console.error(response.status)
+        return;
+    }
+
+    console.log("Updated")
+})
+
+// initial bio
+bioTextEditor.querySelector('.main-data').innerHTML = INITIAL_BIO

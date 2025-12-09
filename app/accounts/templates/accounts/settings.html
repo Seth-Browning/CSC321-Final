@@ -28,7 +28,6 @@
         const CURRENT_USERNAME = "{{ user.username }}"
         const HOME_PAGE = "{% url 'home' %}"
         const INITIAL_BIO = "{{ profile.bio }}"
-        console.log(INITIAL_BIO)
     </script>
 
     <!--
@@ -73,8 +72,11 @@
             </div>
 
             <div class="setting-card" data-value="profile" data-active="false">
+                <h1 class="setting-title">Change Bio</h1>
+                <hr>
+
                 <div class="setting-option">
-                    <text-editor confirm-button-text="Change Bio"></text-editor>
+                    <text-editor id="bio-text-editor" confirm-button-text="Change Bio"></text-editor>
                 </div>
             </div>
         </section>
