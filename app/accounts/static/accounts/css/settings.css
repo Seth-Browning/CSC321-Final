@@ -19,7 +19,7 @@ hr {
     grid-area: sidebar;
     background: var(--bg-m-dark);
     border-radius: 10px;
-    color: var(--text);
+
 }
 
 #setting-select ul {
@@ -36,13 +36,15 @@ hr {
     transition: 200ms;
 }
 
-#setting-select li:hover,
-#setting-select .active {
-    background: var(--bg-light);
-}
 
 #setting-select .active {
     font-weight: bold;
+    color: var(--text);
+    background: var(--bg-light);
+}
+
+#setting-select li:hover:not(.active) {
+    background: var(--bg);
 }
 
 #main-settings {
