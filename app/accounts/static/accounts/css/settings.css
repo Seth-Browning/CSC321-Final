@@ -97,13 +97,6 @@ hr {
     font-size: 1.25rem;
 }
 
-.button-bar {
-    display: flex;
-    gap: var(--spacing-s);
-    width: 100%;
-    justify-content: flex-end;
-}
-
 dialog {
     background: var(--bg-m-light);
     position: absolute;
@@ -130,6 +123,7 @@ dialog {
 
 .setting-title{
     line-height: 0;
+    color: var(--text);
 }
 
 .danger-title {
