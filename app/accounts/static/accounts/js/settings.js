@@ -28,3 +28,26 @@ deleteModal.querySelector('button.danger-button').addEventListener('click', asyn
     window.location.href = HOME_PAGE
 
 })
+
+/**
+ * 
+ * @param {string} category 
+ */
+const selectSettingCategory = (category) => {
+    document.querySelectorAll('.setting-card').forEach(card => {
+        card.dataset.active = "false"
+        if (card.dataset.value === category) {
+            card.dataset.active = "true"
+        }
+    })
+}
+
+document.querySelectorAll('#setting-select li').forEach(category => {
+    category.addEventListener('click', () => {
+        selectSettingCategory(category.dataset.value)
+        document.querySelectorAll('#setting-select li').forEach(c => {
+            c.classList.remove('active')
+        })
+        category.classList.add('active')
+    })
+})

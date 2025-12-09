@@ -11,6 +11,10 @@
     grid-template-areas: "sidebar settings" "footer footer"
 }
 
+hr {
+    border: var(--border);
+}
+
 #setting-select {
     grid-area: sidebar;
     background: var(--bg-m-light);
@@ -37,6 +41,17 @@
 
 #main-settings {
     grid-area: settings;
+    padding: var(--spacing-l);
+}
+
+.setting-card[data-active="false"] {
+    display: none;
+}
+
+.setting-text {
+    color: var(--text);
+    line-height: 0;
+    margin-top: var(--spacing-xl);
 }
 
 #setting-options {
@@ -110,4 +125,13 @@ dialog {
 
 .button-row button {
     flex: 50%;
+}
+
+.setting-title{
+    line-height: 0;
+}
+
+.danger-title {
+    color: var(--danger);
+    font-weight: bold;
 }

@@ -27,6 +27,8 @@
     <script>
         const CURRENT_USERNAME = "{{ user.username }}"
         const HOME_PAGE = "{% url 'home' %}"
+        const INITIAL_BIO = "{{ profile.bio }}"
+        console.log(INITIAL_BIO)
     </script>
 
     <!--
@@ -42,7 +44,7 @@
     -->
     
     <dialog id="delete-account-warning" closed>
-        <p>Warning! Deleting your account is irreversible, are you sure you want to delete?</p>
+        <p>Warning! This action cannot be undone, please confirm.</p>
 
         <div class="button-row">
             <button class="danger-button">Confirm Deletion</button>
@@ -53,24 +55,24 @@
     <div id="settings-card">
         <aside id="setting-select">
             <ul>
-                <li data-value="account">Account</li>
+                <li class="active" data-value="account">Account</li>
                 <!-- <li>Privacy</li> -->
                 <li data-value="profile">Profile</li>
             </ul>
         </aside>
 
         <section id="main-settings">
-            <div class="setting-card" data-value="account">
-                <div class="setting-option">
-                    <button class="primary-button" id="reset-password-setting">Reset Password</button>
-                </div>
+            <div class="setting-card" data-value="account" data-active="true">
+                <h1 class="setting-title danger-title">Delete Account</h1>
+                <hr>
 
                 <div class="setting-option setting-danger">
-                    <button class="danger-button" id="delete-account-setting">Delete Account</button>
+                    <p class="setting-text">Account deletion is permanent, be sure before proceeding.</p>
+                    <button class="danger-button" id="delete-account-setting">Delete</button>
                 </div>
             </div>
 
-            <div class="setting-card" data-value="profile">
+            <div class="setting-card" data-value="profile" data-active="false">
                 <div class="setting-option">
                     <text-editor confirm-button-text="Change Bio"></text-editor>
                 </div>
