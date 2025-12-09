@@ -1,14 +1,14 @@
 #settings-card {
     width: 80%;
-    margin: var(--spacing-s) auto;
+    margin: var(--spacing-xxl) auto;
     background: var(--bg);
     border: var(--border);
     border-radius: 20px;
     padding: var(--spacing-m);
     display: grid;
     grid-template-columns: 150px 5fr;
-    grid-template-rows: auto 50px;
-    grid-template-areas: "sidebar settings" "footer footer"
+    grid-template-rows: auto;
+    grid-template-areas: "sidebar settings"
 }
 
 hr {
@@ -17,8 +17,8 @@ hr {
 
 #setting-select {
     grid-area: sidebar;
-    border-right: var(--border);
-    border-right-width: 2px;
+    background: var(--bg-m-dark);
+    border-radius: 10px;
     color: var(--text);
 }
 
@@ -41,6 +41,10 @@ hr {
     background: var(--bg-light);
 }
 
+#setting-select .active {
+    font-weight: bold;
+}
+
 #main-settings {
     grid-area: settings;
     padding: var(--spacing-l);
@@ -58,15 +62,6 @@ hr {
     color: var(--text);
     line-height: 0;
     margin-top: var(--spacing-xl);
-}
-
-#setting-options {
-    grid-area: footer;
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-s);
-    align-items: center;
-    justify-content: flex-end;
 }
 
 .text-editor {
