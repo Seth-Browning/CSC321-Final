@@ -50,12 +50,23 @@
 
         <section id="main-settings">
             <div class="setting-card" data-value="account" data-active="true">
-                <h1 class="setting-title danger-title">Delete Account</h1>
-                <hr>
+                <div class="setting-chunk">
+                    <h1 class="setting-title">Change Password</h1>
+                    <hr>
 
-                <div class="setting-option setting-danger">
-                    <p class="setting-text">Account deletion is permanent, be sure before proceeding.</p>
-                    <button class="danger-button" id="delete-account-setting">Delete</button>
+                    <div class="setting-option">
+                        <button id="change-password-button" class="primary-button" data-destination="{% url 'change_password' %}">Change Password</button>
+                    </div>
+                </div>
+
+                <div class="setting-chunk">
+                    <h1 class="setting-title danger-title">Delete Account</h1>
+                    <hr>
+
+                    <div class="setting-option setting-danger">
+                        <p class="setting-text">Account deletion is permanent, be sure before proceeding.</p>
+                        <button class="danger-button" id="delete-account-setting">Delete</button>
+                    </div>
                 </div>
             </div>
 

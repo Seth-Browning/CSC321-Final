@@ -17,8 +17,9 @@ hr {
 
 #setting-select {
     grid-area: sidebar;
-    background: var(--bg-m-light);
-    border-radius: 10px;
+    border-right: var(--border);
+    border-right-width: 2px;
+    color: var(--text);
 }
 
 #setting-select ul {
@@ -29,6 +30,7 @@ hr {
 #setting-select li {
     margin: var(--spacing-xs);
     padding: var(--spacing-s);
+    
     border-radius: 5px;
     cursor: pointer;
     transition: 200ms;
@@ -46,6 +48,10 @@ hr {
 
 .setting-card[data-active="false"] {
     display: none;
+}
+
+.setting-chunk {
+    margin-bottom: var(--spacing-xxxl);
 }
 
 .setting-text {

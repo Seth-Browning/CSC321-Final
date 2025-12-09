@@ -82,3 +82,9 @@ bioTextEditor.addEventListener('text-editor-submit', async (e) => {
 
 // initial bio
 bioTextEditor.querySelector('.main-data').innerHTML = INITIAL_BIO
+
+
+document.querySelector('#change-password-button').addEventListener('click', () => {
+    const dest = document.querySelector('#change-password-button').dataset.destination
+    window.location.href = dest
+})
