@@ -21,17 +21,10 @@
         - See report information (admin only) ✅
         - Resolve reports (admin only) ✅
     - User
-        - Change Bio
-        - Change password
-        - Recover Password
-        - Two-factor auth
+        - Change Bio ✅
+        - Delete Account ✅
 
 - Connect API to frontend
     - Make threads ✅
     - Make initial posts on new threads ✅
     - Make new posts on existing threads ✅
-    - Edit posts user made
-    - Edit threads user made
-    - Delete posts user made
-    - Delete threads user made
-    - Make Reports
